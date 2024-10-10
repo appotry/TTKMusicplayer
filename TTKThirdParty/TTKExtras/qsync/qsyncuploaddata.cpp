@@ -26,7 +26,7 @@ QSyncUploadData::QSyncUploadData(QNetworkAccessManager *networkManager, QObject 
     d->m_manager = networkManager;
 }
 
-void QSyncUploadData::uploadDataOperator(const QString &time, const QString &bucket, const QString &fileName, const QString &filePath)
+void QSyncUploadData::request(const QString &time, const QString &bucket, const QString &fileName, const QString &filePath)
 {
     TTK_D(QSyncUploadData);
     d->m_uploadTime = time;
@@ -89,8 +89,8 @@ void QSyncUploadData::receiveDataFromServer()
     }
 }
 
-void QSyncUploadData::uploadProgress(qint64 bytesSent, qint64 bytesTotal)
+void QSyncUploadData::uploadProgress(qint64 percent, qint64 total)
 {
     TTK_D(QSyncUploadData);
-    Q_EMIT uploadProgressChanged(d->m_uploadTime, bytesSent, bytesTotal);
+    Q_EMIT uploadProgressChanged(d->m_uploadTime, percent, total);
 }

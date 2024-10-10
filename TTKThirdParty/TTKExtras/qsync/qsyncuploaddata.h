@@ -36,7 +36,7 @@ public:
     /*!
      * Get uplaod data operator.
      */
-    void uploadDataOperator(const QString &time, const QString &bucket, const QString &fileName, const QString &filePath);
+    void request(const QString &time, const QString &bucket, const QString &fileName, const QString &filePath);
 
 Q_SIGNALS:
     /*!
@@ -56,7 +56,7 @@ private Q_SLOTS:
     /*!
      * Show upload progress.
      */
-    void uploadProgress(qint64 bytesSent, qint64 bytesTotal);
+    void uploadProgress(qint64 percent, qint64 total);
 
 };
 
