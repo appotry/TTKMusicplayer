@@ -84,6 +84,7 @@ void MusicSongsContainerWidget::updateSongItem(const MusicSongItem &item)
         songItem->m_sort = item.m_sort;
         songItem->m_songs =item.m_songs;
         songItem->m_itemName = item.m_itemName;
+        songItem->m_itemWidget->removeItems();
         songItem->m_itemWidget->updateSongsList(songItem->m_songs);
         setItemTitle(songItem);
 
@@ -268,9 +269,9 @@ void MusicSongsContainerWidget::importSongsByPath(const QStringList &files, int 
         item->m_itemWidget->updateSongsList(item->m_songs);
         setItemTitle(item);
         setCurrentIndex(playlistRow);
-
-        MusicToastLabel::popup(tr("Import music songs done"));
     }
+
+    MusicToastLabel::popup(tr("Import music songs done"));
 }
 
 QStringList MusicSongsContainerWidget::songsFileName(int index) const
